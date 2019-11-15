@@ -1,0 +1,8 @@
+[submodule "libuwsc"]
+	path = libuwsc
+	url = git@github.com:zhaojh329/libuwsc.git
+    ignore = dirty
+[submodule "libev"]
+	path = libev
+	url = git@github.com:enki/libev.git
+    ignore = dirty
