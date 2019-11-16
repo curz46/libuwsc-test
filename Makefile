@@ -4,7 +4,8 @@ dep = $(obj:.o=.d))
 exe = bin/test
 
 override CFLAGS = -Ilibuwsc/src -Ilibuwsc/src/buffer \
-                  -Ilibev
+                  -Ilibev \
+                  -g
 LDFLAGS = -Llibev/.libs -l:libev.a \
           -Llibuwsc/build/src -l:libuwsc.a \
           -pthread -ldl -lldap -llber -lz -lssl -lcrypto -lm
