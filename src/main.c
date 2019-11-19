@@ -28,13 +28,11 @@ void ws_onmessage(struct uwsc_client* client,
 
     char* content = (char*) data;
     if (strcmp(content, test_string) != 0) {
-        printf("BUG: Received content which does *not* match expected string:\n");
-        printf("%s\n\n", content);
+        printf(" ERR: content!=test: \"%s\"\n", content);
     } else {
-        printf("Received expected string.\n");
+        printf("  OK: content==test: \"%s\"\n", content);
     }
-
-    test_string = NULL;
+    printf("=====================================================\n");
 }
 
 void send_data_periodically() {
@@ -42,12 +40,9 @@ void send_data_periodically() {
     while (1) {
         usleep(period);
 
-        char* content = (char*) malloc(sizeof(char) * strlen(test_string));
-        strcpy(content, test_string);
-
         // Send packet
-        client->send(client, content, strlen(content), UWSC_OP_TEXT);
-        printf("Sent: %s\n", content);
+        client->send(client, test_string, strlen(test_string), UWSC_OP_TEXT);
+        printf("Sent: \"%s\"\n", test_string);
     }
 }
 
